@@ -359,7 +359,7 @@ logic FpgaPins_Fpga_CALC_valid_or_reset_a1;
                      //$valid = $reset ? 1'b0 : ! >>1$valid;
                      assign FpgaPins_Fpga_CALC_valid_a1 =
                         FpgaPins_Fpga_CALC_reset_a1 ? 1'b0 :
-                        (FpgaPins_Fpga_CALC_equals_in_a1 && !FpgaPins_Fpga_CALC_equals_in_a2) ? 1'b1 : 0'b0;
+                        (FpgaPins_Fpga_CALC_equals_in_a1 && !FpgaPins_Fpga_CALC_equals_in_a2);
                      assign FpgaPins_Fpga_CALC_val1_a1[7:0] = FpgaPins_Fpga_CALC_out_a3;
                      assign FpgaPins_Fpga_CALC_valid_or_reset_a1 = FpgaPins_Fpga_CALC_valid_a1 || FpgaPins_Fpga_CALC_reset_a1;
             
@@ -467,5 +467,3 @@ endmodule
 
 // Undefine macros defined by SandPiper.
 `undef BOGUS_USE
-
-            
