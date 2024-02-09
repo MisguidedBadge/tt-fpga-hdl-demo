@@ -441,21 +441,21 @@ logic FpgaPins_Fpga_CALC_valid_or_reset_a1;
                   //_@4
                      assign FpgaPins_Fpga_CALC_digit_a4[3:0] = FpgaPins_Fpga_CALC_out_a4;//$cnt;
                      assign uo_out =
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b0000 ? 8'b00111111 :
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b0001 ? 8'b00000110 :
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b0010 ? 8'b01011011 :
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b0011 ? 8'b01001111 :
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b0100 ? 8'b01100110 :
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b0101 ? 8'b01101101 :
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b0110 ? 8'b01111101 :
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b0111 ? 8'b00000111 :
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b1000 ? 8'b01111111 :
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b1001 ? 8'b01101111 :
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b1010 ? 8'b01110111 :
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b1011 ? 8'b01111100 :
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b1100 ? 8'b00111001 :
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b1101 ? 8'b01011110 :
-                        FpgaPins_Fpga_CALC_digit_a4 == 8'b1110 ? 8'b01111001 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b0000 ? 8'b00111111 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b0001 ? 8'b00000110 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b0010 ? 8'b01011011 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b0011 ? 8'b01001111 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b0100 ? 8'b01100110 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b0101 ? 8'b01101101 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b0110 ? 8'b01111101 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b0111 ? 8'b00000111 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b1000 ? 8'b01111111 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b1001 ? 8'b01101111 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b1010 ? 8'b01110111 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b1011 ? 8'b01111100 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b1100 ? 8'b00111001 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b1101 ? 8'b01011110 :
+                        FpgaPins_Fpga_CALC_digit_a4 == 4'b1110 ? 8'b01111001 :
                         8'b01110001;
                      //$out[7:0] = $reset ? 7'b0 : >>1$num;
                // Note that pipesignals assigned here can be found under /fpga_pins/fpga.
