@@ -4,7 +4,8 @@
 //_\SV
    // Include Tiny Tapeout Lab.
    // Included URL: "https://raw.githubusercontent.com/os-fpga/Virtual-FPGA-Lab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlv_lib/tiny_tapeout_lib.tlv"// Included URL: "https://raw.githubusercontent.com/os-fpga/Virtual-FPGA-Lab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlv_lib/fpga_includes.tlv"
-//_\source top.tlv 123
+//_\source top.tlv 124
+
 
 //_\SV
 
@@ -18,36 +19,28 @@ module top(input logic clk, input logic reset, input logic [31:0] cyc_cnt, outpu
    logic [7:0] ui_in, uo_out;
    
    logic [31:0] r;
-   always @(posedge clk) r <= 0;
-   //assign ui_in = r[7:0];
+   always @(posedge clk) r <= $urandom();
+   assign ui_in = r[7:0];
    
    logic ena = 1'b0;
    logic rst_n = ! reset;
 
-
+   /*
    // Or, to provide specific inputs at specific times (as for lab C-TB) ...
    // BE SURE TO COMMENT THE ASSIGNMENT OF INPUTS ABOVE.
    // BE SURE TO DRIVE THESE ON THE B-PHASE OF THE CLOCK (ODD STEPS).
    // Driving on the rising clock edge creates a race with the clock that has unpredictable simulation behavior.
    initial begin
       #1  // Drive inputs on the B-phase.
-         ui_in = 8'h55;
-      #20
-         ui_in = 8'h02;
-      #6
-         ui_in = 8'h82;
-      #10
-         ui_in = 8'h01;
-      #10
-         ui_in = 8'h24;
-      #16
-         ui_in = 8'ha4;
+         ui_in = 8'h0;
+      #10 // Step 5 cycles, past reset.
+         ui_in = 8'hFF;
       // ...etc.
    end
-
+   */
 
    // Instantiate the Tiny Tapeout module.
-   tt_um_template tt(.*);
+   my_design tt(.*);
 
    assign passed = top.cyc_cnt > 60;
    assign failed = 1'b0;
@@ -55,7 +48,62 @@ endmodule
 
 
 // Provide a wrapper module to debounce input signals if requested.
+// The Tiny Tapeout top-level module.
+// This simply debounces and synchronizes inputs.
+// Debouncing is based on a counter. A change to any input will only be recognized once ALL inputs
+// are stable for a certain duration. This approach uses a single counter vs. a counter for each
+// bit.
+module tt_um_template (
+    input  wire [7:0] ui_in,    // Dedicated inputs - connected to the input switches
+    output wire [7:0] uo_out,   // Dedicated outputs - connected to the 7 segment display
+    /*   // The FPGA is based on TinyTapeout 3 which has no bidirectional I/Os (vs. TT6 for the ASIC).
+    input  wire [7:0] uio_in,   // IOs: Bidirectional Input path
+    output wire [7:0] uio_out,  // IOs: Bidirectional Output path
+    output wire [7:0] uio_oe,   // IOs: Bidirectional Enable path (active high: 0=input, 1=output)
+    */
+    input  wire       ena,      // will go high when the design is enabled
+    input  wire       clk,      // clock
+    input  wire       rst_n     // reset_n - low to reset
+);
+    
+    // Synchronize.
+    logic [9:0] inputs_ff, inputs_sync;
+    always @(posedge clk) begin
+        inputs_ff <= {ui_in, ena, rst_n};
+        inputs_sync <= inputs_ff;
+    end
 
+    // Debounce.
+    `define DEBOUNCE_MAX_CNT 14'h8
+    logic [9:0] inputs_candidate, inputs_captured;
+    logic sync_rst_n = inputs_sync[0];
+    logic [13:0] cnt;
+    always @(posedge clk) begin
+        if (!sync_rst_n)
+           cnt <= `DEBOUNCE_MAX_CNT;
+        else if (inputs_sync != inputs_candidate) begin
+           // Inputs changed before stablizing.
+           cnt <= `DEBOUNCE_MAX_CNT;
+           inputs_candidate <= inputs_sync;
+        end
+        else if (cnt > 0)
+           cnt <= cnt - 14'b1;
+        else begin
+           // Cnt == 0. Capture candidate inputs.
+           inputs_captured <= inputs_candidate;
+        end
+    end
+    logic [7:0] clean_ui_in;
+    logic clean_ena, clean_rst_n;
+    assign {clean_ui_in, clean_ena, clean_rst_n} = inputs_captured;
+
+    my_design my_design (
+        .ui_in(clean_ui_in),
+        
+        .ena(clean_ena),
+        .rst_n(clean_rst_n),
+        .*);
+endmodule
 //_\SV
 
 
@@ -64,7 +112,7 @@ endmodule
 // The Tiny Tapeout module
 // =======================
 
-module tt_um_template (
+module my_design (
     input  wire [7:0] ui_in,    // Dedicated inputs - connected to the input switches
     output wire [7:0] uo_out,   // Dedicated outputs - connected to the 7 segment display
     /*   // The FPGA is based on TinyTapeout 3 which has no bidirectional I/Os (vs. TT6 for the ASIC).
@@ -317,7 +365,7 @@ logic FpgaPins_Fpga_CALC_valid_or_reset_a1;
 //_\TLV
    /* verilator lint_off UNOPTFLAT */
    // Connect Tiny Tapeout I/Os to Virtual FPGA Lab.
-   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlvlib/tinytapeoutlib.tlv 76   // Instantiated from top.tlv, 200 as: m5+tt_connections()
+   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlvlib/tinytapeoutlib.tlv 76   // Instantiated from top.tlv, 194 as: m5+tt_connections()
       assign L0_slideswitch_a0[7:0] = ui_in;
       assign L0_sseg_segment_n_a0[6:0] = ~ uo_out[6:0];
       assign L0_sseg_decimal_point_n_a0 = ~ uo_out[7];
@@ -325,7 +373,7 @@ logic FpgaPins_Fpga_CALC_valid_or_reset_a1;
    //_\end_source
 
    // Instantiate the Virtual FPGA Lab.
-   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlvlib/fpgaincludes.tlv 307   // Instantiated from top.tlv, 203 as: m5+board(/top, /fpga, 7, $, , calc)
+   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlvlib/fpgaincludes.tlv 307   // Instantiated from top.tlv, 197 as: m5+board(/top, /fpga, 7, $, , calc)
       
       //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlvlib/fpgaincludes.tlv 355   // Instantiated from /raw.githubusercontent.com/osfpga/VirtualFPGALab/a069f1e4e19adc829b53237b3e0b5d6763dc3194/tlvlib/fpgaincludes.tlv, 309 as: m4+thanks(m5__l(309)m5_eval(m5_get(BOARD_THANKS_ARGS)))
          //_/thanks
@@ -345,6 +393,7 @@ logic FpgaPins_Fpga_CALC_valid_or_reset_a1;
             
             
             
+            
                //_|calc
                   //_@0
                      assign FpgaPins_Fpga_CALC_reset_a0 = reset;
@@ -359,7 +408,7 @@ logic FpgaPins_Fpga_CALC_valid_or_reset_a1;
                      //$valid = $reset ? 1'b0 : ! >>1$valid;
                      assign FpgaPins_Fpga_CALC_valid_a1 =
                         FpgaPins_Fpga_CALC_reset_a1 ? 1'b0 :
-                        (FpgaPins_Fpga_CALC_equals_in_a1 && !FpgaPins_Fpga_CALC_equals_in_a2);
+                        (FpgaPins_Fpga_CALC_equals_in_a1 && ! FpgaPins_Fpga_CALC_equals_in_a2);
                      assign FpgaPins_Fpga_CALC_val1_a1[7:0] = FpgaPins_Fpga_CALC_out_a3;
                      assign FpgaPins_Fpga_CALC_valid_or_reset_a1 = FpgaPins_Fpga_CALC_valid_a1 || FpgaPins_Fpga_CALC_reset_a1;
             
@@ -416,7 +465,7 @@ logic FpgaPins_Fpga_CALC_valid_or_reset_a1;
             
             
                // Connect Tiny Tapeout outputs. Note that uio_ outputs are not available in the Tiny-Tapeout-3-based FPGA boards.
-               // *uo_out = 8'b0;
+               //*uo_out = 8'b0;
                
                
             //_\end_source
@@ -455,7 +504,7 @@ logic FpgaPins_Fpga_CALC_valid_or_reset_a1;
       
    //_\end_source
    // Label the switch inputs [0..7] (1..8 on the physical switch panel) (top-to-bottom).
-   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlvlib/tinytapeoutlib.tlv 82   // Instantiated from top.tlv, 205 as: m5+tt_input_labels_viz(⌈"Value[0]", "Value[1]", "Value[2]", "Value[3]", "Op[0]", "Op[1]", "Op[2]", "="⌉)
+   //_\source /raw.githubusercontent.com/osfpga/VirtualFPGALab/35e36bd144fddd75495d4cbc01c4fc50ac5bde6f/tlvlib/tinytapeoutlib.tlv 82   // Instantiated from top.tlv, 199 as: m5+tt_input_labels_viz(⌈"Value[0]", "Value[1]", "Value[2]", "Value[3]", "Op[0]", "Op[1]", "Op[2]", "="⌉)
       for (input_label = 0; input_label <= 7; input_label++) begin : L1_InputLabel //_/input_label
          
       end
