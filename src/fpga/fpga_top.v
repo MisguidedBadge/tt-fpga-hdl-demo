@@ -27,8 +27,8 @@ input [0:0] reset;
 input [0:0] clk;
 //----- GPIO PORTS -----
 //inout [0:19] gfpga_pad_GPIO_PAD;
-input [11:0]	fpga_io_in;
-output [6:0]		fpga_io_out;
+input [14:0]	fpga_io_in;
+output [4:0]		fpga_io_out;
 //----- INPUT PORTS -----
 input [0:0] ccff_head;
 //----- OUTPUT PORTS -----
@@ -41,9 +41,10 @@ output [0:0] ccff_tail;
 //----- BEGIN Registered ports -----
 //----- END Registered ports -----
 
-reg [19:0] gfpga_pad_GPIO_PAD[19:7];
-assign fpga_io_out = gfpga_pad_GPIO_PAD[6:0];
-assign gfpga_pad_GPIO_PAD[20] = 'b0;
+wire [14:0] gfpga_pad_GPIO_PAD_IN;
+reg  [4:0] gfpga_pad_GPIO_PAD_OUT;
+assign fpga_io_out = gfpga_pad_GPIO_PAD_OUT;
+assign gfpga_pad_GPIO_PAD_IN = fpga_io_in;
 
 wire [0:0] cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_0__pin_outpad_0_;
 wire [0:0] cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_1__pin_outpad_0_;
@@ -136,7 +137,7 @@ wire [0:8] sb_1__1__0_chany_bottom_out;
 
 	grid_io_top grid_io_top_1__2_ (
 		.prog_clk(prog_clk),
-		.gfpga_pad_GPIO_PAD(gfpga_pad_GPIO_PAD[0:4]),
+		.gfpga_pad_GPIO_PAD(gfpga_pad_GPIO_PAD_IN[0:4]),
 		.bottom_width_0_height_0_subtile_0__pin_outpad_0_(cbx_1__1__0_top_grid_bottom_width_0_height_0_subtile_0__pin_outpad_0_),
 		.bottom_width_0_height_0_subtile_1__pin_outpad_0_(cbx_1__1__0_top_grid_bottom_width_0_height_0_subtile_1__pin_outpad_0_),
 		.bottom_width_0_height_0_subtile_2__pin_outpad_0_(cbx_1__1__0_top_grid_bottom_width_0_height_0_subtile_2__pin_outpad_0_),
@@ -152,7 +153,7 @@ wire [0:8] sb_1__1__0_chany_bottom_out;
 
 	grid_io_right grid_io_right_2__1_ (
 		.prog_clk(prog_clk),
-		.gfpga_pad_GPIO_PAD(gfpga_pad_GPIO_PAD[5:9]),
+		.gfpga_pad_GPIO_PAD(gfpga_pad_GPIO_PAD_IN[5:9]),
 		.left_width_0_height_0_subtile_0__pin_outpad_0_(cby_1__1__0_right_grid_left_width_0_height_0_subtile_0__pin_outpad_0_),
 		.left_width_0_height_0_subtile_1__pin_outpad_0_(cby_1__1__0_right_grid_left_width_0_height_0_subtile_1__pin_outpad_0_),
 		.left_width_0_height_0_subtile_2__pin_outpad_0_(cby_1__1__0_right_grid_left_width_0_height_0_subtile_2__pin_outpad_0_),
@@ -168,7 +169,7 @@ wire [0:8] sb_1__1__0_chany_bottom_out;
 
 	grid_io_bottom grid_io_bottom_1__0_ (
 		.prog_clk(prog_clk),
-		.gfpga_pad_GPIO_PAD(gfpga_pad_GPIO_PAD[10:14]),
+		.gfpga_pad_GPIO_PAD(gfpga_pad_GPIO_PAD_IN[10:14]),
 		.top_width_0_height_0_subtile_0__pin_outpad_0_(cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_0__pin_outpad_0_),
 		.top_width_0_height_0_subtile_1__pin_outpad_0_(cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_1__pin_outpad_0_),
 		.top_width_0_height_0_subtile_2__pin_outpad_0_(cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_2__pin_outpad_0_),
@@ -184,7 +185,7 @@ wire [0:8] sb_1__1__0_chany_bottom_out;
 
 	grid_io_left grid_io_left_0__1_ (
 		.prog_clk(prog_clk),
-		.gfpga_pad_GPIO_PAD(gfpga_pad_GPIO_PAD[15:19]),
+		.gfpga_pad_GPIO_PAD(gfpga_pad_GPIO_PAD_OUT[0:4]),
 		.right_width_0_height_0_subtile_0__pin_outpad_0_(cby_0__1__0_left_grid_right_width_0_height_0_subtile_0__pin_outpad_0_),
 		.right_width_0_height_0_subtile_1__pin_outpad_0_(cby_0__1__0_left_grid_right_width_0_height_0_subtile_1__pin_outpad_0_),
 		.right_width_0_height_0_subtile_2__pin_outpad_0_(cby_0__1__0_left_grid_right_width_0_height_0_subtile_2__pin_outpad_0_),
