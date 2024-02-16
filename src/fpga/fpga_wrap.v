@@ -33,3 +33,5 @@ assign uio_oe = 0;
 fpga_top fpga(.prog_clk(pro_clk), .set(set), .reset(reset),
  .clk(clk), .fpga_io_in(fpga_io_in), 
  .fpga_io_out(fpga_io_out), .ccff_head(ccff_head), .ccff_tail(ccff_tail));
+
+endmodule
