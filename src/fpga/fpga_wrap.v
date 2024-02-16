@@ -27,7 +27,7 @@ assign ccff_head = ui_in[3];
 
 wire [11:0] fpga_io_in;
 assign fpga_io_in = {ui_in[7:4], uio_in[7:0]}; 
-wire [6:0] fpga_io_out
+wire [6:0] fpga_io_out;
 assign fpga_io_out = uo_out[7:1];
 assign uio_out = 8'b0;
 assign uio_oe = 0;
