@@ -42,7 +42,7 @@ output [0:0] ccff_tail;
 //----- END Registered ports -----
 
 wire [19:0] gfpga_pad_GPIO_PAD[19:7];
-assign fpga_io_out = gfpga_pad_GPIO_PAD[6:0]
+assign fpga_io_out = gfpga_pad_GPIO_PAD[6:0];
 assign gfpga_pad_GPIO_PAD[20] = 'b0;
 
 wire [0:0] cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_0__pin_outpad_0_;
