@@ -13,6 +13,8 @@ module fpga_top(prog_clk,
                 set,
                 reset,
                 clk,
+				fpga_io_in,
+				fpga_io_out,
                 gfpga_pad_GPIO_PAD,
                 ccff_head,
                 ccff_tail);
