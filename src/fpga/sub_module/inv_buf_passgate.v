@@ -3,7 +3,7 @@
 //	Description: Essential gates
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Fri Feb 16 02:54:09 2024
+//	Date: Sun Feb 18 23:40:25 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -52,74 +52,6 @@ endmodule
 //----- Default net type -----
 `default_nettype none
 
-// ----- Verilog module for INVTX1 -----
-module INVTX1(in,
-              out);
-//----- INPUT PORTS -----
-input [0:0] in;
-//----- OUTPUT PORTS -----
-output [0:0] out;
-
-//----- BEGIN wire-connection ports -----
-//----- END wire-connection ports -----
-
-
-//----- BEGIN Registered ports -----
-//----- END Registered ports -----
-
-// ----- Verilog codes of a regular inverter -----
-	assign out = (in === 1'bz)? $random : ~in;
-
-`ifdef ENABLE_TIMING
-// ------ BEGIN Pin-to-pin Timing constraints -----
-	specify
-		(in => out) = (0.01, 0.01);
-	endspecify
-// ------ END Pin-to-pin Timing constraints -----
-`endif
-endmodule
-// ----- END Verilog module for INVTX1 -----
-
-//----- Default net type -----
-`default_nettype wire
-
-//----- Default net type -----
-`default_nettype none
-
-// ----- Verilog module for buf4 -----
-module buf4(in,
-            out);
-//----- INPUT PORTS -----
-input [0:0] in;
-//----- OUTPUT PORTS -----
-output [0:0] out;
-
-//----- BEGIN wire-connection ports -----
-//----- END wire-connection ports -----
-
-
-//----- BEGIN Registered ports -----
-//----- END Registered ports -----
-
-// ----- Verilog codes of a regular inverter -----
-	assign out = (in === 1'bz)? $random : in;
-
-`ifdef ENABLE_TIMING
-// ------ BEGIN Pin-to-pin Timing constraints -----
-	specify
-		(in => out) = (0.01, 0.01);
-	endspecify
-// ------ END Pin-to-pin Timing constraints -----
-`endif
-endmodule
-// ----- END Verilog module for buf4 -----
-
-//----- Default net type -----
-`default_nettype wire
-
-//----- Default net type -----
-`default_nettype none
-
 // ----- Verilog module for tap_buf4 -----
 module tap_buf4(in,
                 out);
@@ -147,47 +79,6 @@ output [0:0] out;
 `endif
 endmodule
 // ----- END Verilog module for tap_buf4 -----
-
-//----- Default net type -----
-`default_nettype wire
-
-//----- Default net type -----
-`default_nettype none
-
-// ----- Verilog module for TGATE -----
-module TGATE(in,
-             sel,
-             selb,
-             out);
-//----- INPUT PORTS -----
-input [0:0] in;
-//----- INPUT PORTS -----
-input [0:0] sel;
-//----- INPUT PORTS -----
-input [0:0] selb;
-//----- OUTPUT PORTS -----
-output [0:0] out;
-
-//----- BEGIN wire-connection ports -----
-//----- END wire-connection ports -----
-
-
-//----- BEGIN Registered ports -----
-//----- END Registered ports -----
-
-	assign out = sel ? in : 1'bz;
-
-`ifdef ENABLE_TIMING
-// ------ BEGIN Pin-to-pin Timing constraints -----
-	specify
-		(in => out) = (0.01, 0.01);
-		(sel => out) = (0.005, 0.005);
-		(selb => out) = (0.005, 0.005);
-	endspecify
-// ------ END Pin-to-pin Timing constraints -----
-`endif
-endmodule
-// ----- END Verilog module for TGATE -----
 
 //----- Default net type -----
 `default_nettype wire

@@ -3,7 +3,7 @@
 //	Description: Verilog modules for pb_type: fle
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Fri Feb 16 02:54:09 2024
+//	Date: Sun Feb 18 23:40:25 2024
 //-------------------------------------------
 // ----- BEGIN Physical programmable logic block Verilog module: fle -----
 //----- Default net type -----
@@ -11,8 +11,6 @@
 
 // ----- Verilog module for logical_tile_clb_mode_default__fle -----
 module logical_tile_clb_mode_default__fle(prog_clk,
-                                          set,
-                                          reset,
                                           clk,
                                           fle_in,
                                           fle_clk,
@@ -21,10 +19,6 @@ module logical_tile_clb_mode_default__fle(prog_clk,
                                           ccff_tail);
 //----- GLOBAL PORTS -----
 input [0:0] prog_clk;
-//----- GLOBAL PORTS -----
-input [0:0] set;
-//----- GLOBAL PORTS -----
-input [0:0] reset;
 //----- GLOBAL PORTS -----
 input [0:0] clk;
 //----- INPUT PORTS -----
@@ -63,8 +57,6 @@ wire [0:0] logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_0_ble4_out;
 
 	logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4 logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_0 (
 		.prog_clk(prog_clk),
-		.set(set),
-		.reset(reset),
 		.clk(clk),
 		.ble4_in({direct_interc_1_out, direct_interc_2_out, direct_interc_3_out, direct_interc_4_out}),
 		.ble4_clk(direct_interc_5_out),

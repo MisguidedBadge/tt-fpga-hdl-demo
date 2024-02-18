@@ -3,7 +3,7 @@
 //	Description: Verilog modules for physical tile: clb]
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Fri Feb 16 02:54:09 2024
+//	Date: Sun Feb 18 23:40:25 2024
 //-------------------------------------------
 // ----- BEGIN Grid Verilog module: grid_clb -----
 //----- Default net type -----
@@ -11,66 +11,33 @@
 
 // ----- Verilog module for grid_clb -----
 module grid_clb(prog_clk,
-                set,
-                reset,
                 clk,
                 top_width_0_height_0_subtile_0__pin_I_0_,
-                top_width_0_height_0_subtile_0__pin_I_4_,
-                top_width_0_height_0_subtile_0__pin_I_8_,
-                right_width_0_height_0_subtile_0__pin_I_1_,
-                right_width_0_height_0_subtile_0__pin_I_5_,
-                right_width_0_height_0_subtile_0__pin_I_9_,
-                bottom_width_0_height_0_subtile_0__pin_I_2_,
-                bottom_width_0_height_0_subtile_0__pin_I_6_,
-                bottom_width_0_height_0_subtile_0__pin_clk_0_,
-                left_width_0_height_0_subtile_0__pin_I_3_,
-                left_width_0_height_0_subtile_0__pin_I_7_,
+                top_width_0_height_0_subtile_0__pin_I_1_,
+                top_width_0_height_0_subtile_0__pin_I_2_,
+                top_width_0_height_0_subtile_0__pin_I_3_,
+                top_width_0_height_0_subtile_0__pin_clk_0_,
                 ccff_head,
-                top_width_0_height_0_subtile_0__pin_O_2_,
-                right_width_0_height_0_subtile_0__pin_O_3_,
-                bottom_width_0_height_0_subtile_0__pin_O_0_,
-                left_width_0_height_0_subtile_0__pin_O_1_,
+                top_width_0_height_0_subtile_0__pin_O_0_,
                 ccff_tail);
 //----- GLOBAL PORTS -----
 input [0:0] prog_clk;
-//----- GLOBAL PORTS -----
-input [0:0] set;
-//----- GLOBAL PORTS -----
-input [0:0] reset;
 //----- GLOBAL PORTS -----
 input [0:0] clk;
 //----- INPUT PORTS -----
 input [0:0] top_width_0_height_0_subtile_0__pin_I_0_;
 //----- INPUT PORTS -----
-input [0:0] top_width_0_height_0_subtile_0__pin_I_4_;
+input [0:0] top_width_0_height_0_subtile_0__pin_I_1_;
 //----- INPUT PORTS -----
-input [0:0] top_width_0_height_0_subtile_0__pin_I_8_;
+input [0:0] top_width_0_height_0_subtile_0__pin_I_2_;
 //----- INPUT PORTS -----
-input [0:0] right_width_0_height_0_subtile_0__pin_I_1_;
+input [0:0] top_width_0_height_0_subtile_0__pin_I_3_;
 //----- INPUT PORTS -----
-input [0:0] right_width_0_height_0_subtile_0__pin_I_5_;
-//----- INPUT PORTS -----
-input [0:0] right_width_0_height_0_subtile_0__pin_I_9_;
-//----- INPUT PORTS -----
-input [0:0] bottom_width_0_height_0_subtile_0__pin_I_2_;
-//----- INPUT PORTS -----
-input [0:0] bottom_width_0_height_0_subtile_0__pin_I_6_;
-//----- INPUT PORTS -----
-input [0:0] bottom_width_0_height_0_subtile_0__pin_clk_0_;
-//----- INPUT PORTS -----
-input [0:0] left_width_0_height_0_subtile_0__pin_I_3_;
-//----- INPUT PORTS -----
-input [0:0] left_width_0_height_0_subtile_0__pin_I_7_;
+input [0:0] top_width_0_height_0_subtile_0__pin_clk_0_;
 //----- INPUT PORTS -----
 input [0:0] ccff_head;
 //----- OUTPUT PORTS -----
-output [0:0] top_width_0_height_0_subtile_0__pin_O_2_;
-//----- OUTPUT PORTS -----
-output [0:0] right_width_0_height_0_subtile_0__pin_O_3_;
-//----- OUTPUT PORTS -----
-output [0:0] bottom_width_0_height_0_subtile_0__pin_O_0_;
-//----- OUTPUT PORTS -----
-output [0:0] left_width_0_height_0_subtile_0__pin_O_1_;
+output [0:0] top_width_0_height_0_subtile_0__pin_O_0_;
 //----- OUTPUT PORTS -----
 output [0:0] ccff_tail;
 
@@ -90,13 +57,11 @@ output [0:0] ccff_tail;
 
 	logical_tile_clb_mode_clb_ logical_tile_clb_mode_clb__0 (
 		.prog_clk(prog_clk),
-		.set(set),
-		.reset(reset),
 		.clk(clk),
-		.clb_I({top_width_0_height_0_subtile_0__pin_I_0_, right_width_0_height_0_subtile_0__pin_I_1_, bottom_width_0_height_0_subtile_0__pin_I_2_, left_width_0_height_0_subtile_0__pin_I_3_, top_width_0_height_0_subtile_0__pin_I_4_, right_width_0_height_0_subtile_0__pin_I_5_, bottom_width_0_height_0_subtile_0__pin_I_6_, left_width_0_height_0_subtile_0__pin_I_7_, top_width_0_height_0_subtile_0__pin_I_8_, right_width_0_height_0_subtile_0__pin_I_9_}),
-		.clb_clk(bottom_width_0_height_0_subtile_0__pin_clk_0_),
+		.clb_I({top_width_0_height_0_subtile_0__pin_I_0_, top_width_0_height_0_subtile_0__pin_I_1_, top_width_0_height_0_subtile_0__pin_I_2_, top_width_0_height_0_subtile_0__pin_I_3_}),
+		.clb_clk(top_width_0_height_0_subtile_0__pin_clk_0_),
 		.ccff_head(ccff_head),
-		.clb_O({bottom_width_0_height_0_subtile_0__pin_O_0_, left_width_0_height_0_subtile_0__pin_O_1_, top_width_0_height_0_subtile_0__pin_O_2_, right_width_0_height_0_subtile_0__pin_O_3_}),
+		.clb_O(top_width_0_height_0_subtile_0__pin_O_0_),
 		.ccff_tail(ccff_tail));
 
 endmodule

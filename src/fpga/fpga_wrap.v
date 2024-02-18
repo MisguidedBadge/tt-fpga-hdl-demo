@@ -20,15 +20,16 @@ wire [0:0] ccff_head;
 wire [0:0] ccff_tail;
 
 assign prog_clk = ui_in[0];
-assign set = ui_in[1];
 assign reset = ui_in[2];
 assign reset = rst_n;
 assign ccff_head = ui_in[3];
 
-wire [14:0] fpga_io_in;
-assign fpga_io_in = {ui_in[7:0], uio_in[7:0]}; 
-wire [4:0] fpga_io_out;
-assign fpga_io_out = uo_out[5:1];
+wire [7:0] fpga_io_in;
+wire [0:0] fpga_io_out;
+
+assign uo_out [7:1] = 7'b0;
+assign fpga_io_in = ui_in;
+
 assign uio_out = 8'b0;
 assign uio_oe = 0;
 

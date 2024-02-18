@@ -3,13 +3,14 @@
 //	Description: Fabric Netlist Summary
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Fri Feb 16 02:54:09 2024
+//	Date: Sun Feb 18 23:40:25 2024
 //-------------------------------------------
 // ------ Include defines: preproc flags -----
 `include "./SRC/fpga_defines.v"
 
 // ------ Include user-defined netlists -----
-`include "/home/misguidedbadge/Desktop/ASIC/OpenFPGA/OpenFPGA/openfpga_flow/openfpga_cell_library/verilog/dff.v"
+`include "/home/misguidedbadge/.volare/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v"
+`include "${SKYWATER_OPENFPGA_HOME}/PDK/skywater-pdk/libraries/sky130_fd_sc_hd/latest/cells/dfxtp/sky130_fd_sc_hd__dfxtp_1.v"
 `include "/home/misguidedbadge/Desktop/ASIC/OpenFPGA/OpenFPGA/openfpga_flow/openfpga_cell_library/verilog/gpio.v"
 // ------ Include primitive module netlists -----
 `include "./SRC/sub_module/inv_buf_passgate.v"
@@ -23,17 +24,16 @@
 `include "./SRC/sub_module/shift_register_banks.v"
 
 // ------ Include logic block netlists -----
-`include "./SRC/lb/logical_tile_io_mode_physical__iopad.v"
-`include "./SRC/lb/logical_tile_io_mode_io_.v"
+`include "./SRC/lb/logical_tile_io_input_mode_physical__iopad.v"
+`include "./SRC/lb/logical_tile_io_input_mode_io_input_.v"
+`include "./SRC/lb/logical_tile_io_output_mode_physical__iopad.v"
+`include "./SRC/lb/logical_tile_io_output_mode_io_output_.v"
 `include "./SRC/lb/logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4.v"
 `include "./SRC/lb/logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff.v"
 `include "./SRC/lb/logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4.v"
 `include "./SRC/lb/logical_tile_clb_mode_default__fle.v"
 `include "./SRC/lb/logical_tile_clb_mode_clb_.v"
-`include "./SRC/lb/grid_io_top.v"
-`include "./SRC/lb/grid_io_right.v"
-`include "./SRC/lb/grid_io_bottom.v"
-`include "./SRC/lb/grid_io_left.v"
+`include "./SRC/lb/grid_io_hard_bottom.v"
 `include "./SRC/lb/grid_clb.v"
 
 // ------ Include routing module netlists -----
@@ -44,7 +44,6 @@
 `include "./SRC/routing/cbx_1__0_.v"
 `include "./SRC/routing/cbx_1__1_.v"
 `include "./SRC/routing/cby_0__1_.v"
-`include "./SRC/routing/cby_1__1_.v"
 
 // ------ Include tile module netlists -----
 

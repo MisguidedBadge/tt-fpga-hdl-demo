@@ -3,7 +3,7 @@
 //	Description: Look-Up Tables
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Fri Feb 16 02:54:09 2024
+//	Date: Sun Feb 18 23:40:25 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -32,56 +32,56 @@ wire [0:0] out;
 //----- END Registered ports -----
 
 
-wire [0:0] INVTX1_0_out;
-wire [0:0] INVTX1_1_out;
-wire [0:0] INVTX1_2_out;
-wire [0:0] INVTX1_3_out;
-wire [0:0] buf4_0_out;
-wire [0:0] buf4_1_out;
-wire [0:0] buf4_2_out;
-wire [0:0] buf4_3_out;
+wire [0:0] sky130_fd_sc_hd__buf_4_0_X;
+wire [0:0] sky130_fd_sc_hd__buf_4_1_X;
+wire [0:0] sky130_fd_sc_hd__buf_4_2_X;
+wire [0:0] sky130_fd_sc_hd__buf_4_3_X;
+wire [0:0] sky130_fd_sc_hd__inv_1_0_Y;
+wire [0:0] sky130_fd_sc_hd__inv_1_1_Y;
+wire [0:0] sky130_fd_sc_hd__inv_1_2_Y;
+wire [0:0] sky130_fd_sc_hd__inv_1_3_Y;
 
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
 // ----- BEGIN Local output short connections -----
 // ----- END Local output short connections -----
 
-	INVTX1 INVTX1_0_ (
-		.in(in[0]),
-		.out(INVTX1_0_out));
+	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_0_ (
+		.A(in[0]),
+		.Y(sky130_fd_sc_hd__inv_1_0_Y));
 
-	INVTX1 INVTX1_1_ (
-		.in(in[1]),
-		.out(INVTX1_1_out));
+	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_1_ (
+		.A(in[1]),
+		.Y(sky130_fd_sc_hd__inv_1_1_Y));
 
-	INVTX1 INVTX1_2_ (
-		.in(in[2]),
-		.out(INVTX1_2_out));
+	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_2_ (
+		.A(in[2]),
+		.Y(sky130_fd_sc_hd__inv_1_2_Y));
 
-	INVTX1 INVTX1_3_ (
-		.in(in[3]),
-		.out(INVTX1_3_out));
+	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_3_ (
+		.A(in[3]),
+		.Y(sky130_fd_sc_hd__inv_1_3_Y));
 
-	buf4 buf4_0_ (
-		.in(in[0]),
-		.out(buf4_0_out));
+	sky130_fd_sc_hd__buf_4 sky130_fd_sc_hd__buf_4_0_ (
+		.A(in[0]),
+		.X(sky130_fd_sc_hd__buf_4_0_X));
 
-	buf4 buf4_1_ (
-		.in(in[1]),
-		.out(buf4_1_out));
+	sky130_fd_sc_hd__buf_4 sky130_fd_sc_hd__buf_4_1_ (
+		.A(in[1]),
+		.X(sky130_fd_sc_hd__buf_4_1_X));
 
-	buf4 buf4_2_ (
-		.in(in[2]),
-		.out(buf4_2_out));
+	sky130_fd_sc_hd__buf_4 sky130_fd_sc_hd__buf_4_2_ (
+		.A(in[2]),
+		.X(sky130_fd_sc_hd__buf_4_2_X));
 
-	buf4 buf4_3_ (
-		.in(in[3]),
-		.out(buf4_3_out));
+	sky130_fd_sc_hd__buf_4 sky130_fd_sc_hd__buf_4_3_ (
+		.A(in[3]),
+		.X(sky130_fd_sc_hd__buf_4_3_X));
 
 	lut4_mux lut4_mux_0_ (
 		.in(sram[0:15]),
-		.sram({buf4_0_out, buf4_1_out, buf4_2_out, buf4_3_out}),
-		.sram_inv({INVTX1_0_out, INVTX1_1_out, INVTX1_2_out, INVTX1_3_out}),
+		.sram({sky130_fd_sc_hd__buf_4_0_X, sky130_fd_sc_hd__buf_4_1_X, sky130_fd_sc_hd__buf_4_2_X, sky130_fd_sc_hd__buf_4_3_X}),
+		.sram_inv({sky130_fd_sc_hd__inv_1_0_Y, sky130_fd_sc_hd__inv_1_1_Y, sky130_fd_sc_hd__inv_1_2_Y, sky130_fd_sc_hd__inv_1_3_Y}),
 		.out(out));
 
 endmodule

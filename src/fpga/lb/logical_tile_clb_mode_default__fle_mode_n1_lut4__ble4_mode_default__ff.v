@@ -3,22 +3,16 @@
 //	Description: Verilog modules for primitive pb_type: ff
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Fri Feb 16 02:54:09 2024
+//	Date: Sun Feb 18 23:40:25 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
 
 // ----- Verilog module for logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff -----
-module logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff(set,
-                                                                              reset,
-                                                                              clk,
+module logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff(clk,
                                                                               ff_D,
                                                                               ff_Q,
                                                                               ff_clk);
-//----- GLOBAL PORTS -----
-input [0:0] set;
-//----- GLOBAL PORTS -----
-input [0:0] reset;
 //----- GLOBAL PORTS -----
 input [0:0] clk;
 //----- INPUT PORTS -----
@@ -45,10 +39,8 @@ wire [0:0] ff_clk;
 // ----- BEGIN Local output short connections -----
 // ----- END Local output short connections -----
 
-	DFFSRQ DFFSRQ_0_ (
-		.SET(set),
-		.RST(reset),
-		.CK(clk),
+	DFF DFF_0_ (
+		.CLK(clk),
 		.D(ff_D),
 		.Q(ff_Q));
 

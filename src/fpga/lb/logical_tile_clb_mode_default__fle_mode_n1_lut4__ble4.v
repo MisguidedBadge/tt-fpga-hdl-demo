@@ -3,7 +3,7 @@
 //	Description: Verilog modules for pb_type: ble4
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Fri Feb 16 02:54:09 2024
+//	Date: Sun Feb 18 23:40:25 2024
 //-------------------------------------------
 // ----- BEGIN Physical programmable logic block Verilog module: ble4 -----
 //----- Default net type -----
@@ -11,8 +11,6 @@
 
 // ----- Verilog module for logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4 -----
 module logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4(prog_clk,
-                                                             set,
-                                                             reset,
                                                              clk,
                                                              ble4_in,
                                                              ble4_clk,
@@ -21,10 +19,6 @@ module logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4(prog_clk,
                                                              ccff_tail);
 //----- GLOBAL PORTS -----
 input [0:0] prog_clk;
-//----- GLOBAL PORTS -----
-input [0:0] set;
-//----- GLOBAL PORTS -----
-input [0:0] reset;
 //----- GLOBAL PORTS -----
 input [0:0] clk;
 //----- INPUT PORTS -----
@@ -58,8 +52,8 @@ wire [0:0] direct_interc_5_out;
 wire [0:0] logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff_0_ff_Q;
 wire [0:0] logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4_0_ccff_tail;
 wire [0:0] logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4_0_lut4_out;
+wire [0:1] mux_ble4_out_0_undriven_sram_inv;
 wire [0:1] mux_tree_tapbuf_size2_0_sram;
-wire [0:1] mux_tree_tapbuf_size2_0_sram_inv;
 
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
@@ -74,8 +68,6 @@ wire [0:1] mux_tree_tapbuf_size2_0_sram_inv;
 		.ccff_tail(logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4_0_ccff_tail));
 
 	logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff_0 (
-		.set(set),
-		.reset(reset),
 		.clk(clk),
 		.ff_D(direct_interc_4_out),
 		.ff_Q(logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff_0_ff_Q),
@@ -84,15 +76,14 @@ wire [0:1] mux_tree_tapbuf_size2_0_sram_inv;
 	mux_tree_tapbuf_size2 mux_ble4_out_0 (
 		.in({logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff_0_ff_Q, logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4_0_lut4_out}),
 		.sram(mux_tree_tapbuf_size2_0_sram[0:1]),
-		.sram_inv(mux_tree_tapbuf_size2_0_sram_inv[0:1]),
+		.sram_inv(mux_ble4_out_0_undriven_sram_inv[0:1]),
 		.out(ble4_out));
 
 	mux_tree_tapbuf_size2_mem mem_ble4_out_0 (
 		.prog_clk(prog_clk),
 		.ccff_head(logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4_0_ccff_tail),
 		.ccff_tail(ccff_tail),
-		.mem_out(mux_tree_tapbuf_size2_0_sram[0:1]),
-		.mem_outb(mux_tree_tapbuf_size2_0_sram_inv[0:1]));
+		.mem_out(mux_tree_tapbuf_size2_0_sram[0:1]));
 
 	direct_interc direct_interc_0_ (
 		.in(ble4_in[0]),

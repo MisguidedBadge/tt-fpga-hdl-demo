@@ -3,7 +3,7 @@
 //	Description: Verilog modules for primitive pb_type: lut4
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Fri Feb 16 02:54:09 2024
+//	Date: Sun Feb 18 23:40:25 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -35,8 +35,8 @@ wire [0:0] lut4_out;
 //----- END Registered ports -----
 
 
+wire [0:15] lut4_0__undriven_sram_inv;
 wire [0:15] lut4_0_sram;
-wire [0:15] lut4_0_sram_inv;
 
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
@@ -46,15 +46,14 @@ wire [0:15] lut4_0_sram_inv;
 	lut4 lut4_0_ (
 		.in(lut4_in[0:3]),
 		.sram(lut4_0_sram[0:15]),
-		.sram_inv(lut4_0_sram_inv[0:15]),
+		.sram_inv(lut4_0__undriven_sram_inv[0:15]),
 		.out(lut4_out));
 
-	lut4_DFF_mem lut4_DFF_mem (
+	lut4_CCFF_mem lut4_CCFF_mem (
 		.prog_clk(prog_clk),
 		.ccff_head(ccff_head),
 		.ccff_tail(ccff_tail),
-		.mem_out(lut4_0_sram[0:15]),
-		.mem_outb(lut4_0_sram_inv[0:15]));
+		.mem_out(lut4_0_sram[0:15]));
 
 endmodule
 // ----- END Verilog module for logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4 -----
