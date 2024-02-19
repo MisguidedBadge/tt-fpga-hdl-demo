@@ -3,7 +3,7 @@
 //	Description: Multiplexers
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Mon Feb 19 00:54:41 2024
+//	Date: Mon Feb 19 02:05:40 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -70,102 +70,6 @@ wire [0:0] sky130_fd_sc_hd__mux2_1_1_X;
 
 endmodule
 // ----- END Verilog module for mux_tree_tapbuf_size2 -----
-
-//----- Default net type -----
-`default_nettype wire
-
-
-
-
-//----- Default net type -----
-`default_nettype none
-
-// ----- Verilog module for mux_tree_tapbuf_size4 -----
-module mux_tree_tapbuf_size4(in,
-                             sram,
-                             sram_inv,
-                             out);
-//----- INPUT PORTS -----
-input [0:3] in;
-//----- INPUT PORTS -----
-input [0:2] sram;
-//----- INPUT PORTS -----
-input [0:2] sram_inv;
-//----- OUTPUT PORTS -----
-output [0:0] out;
-
-//----- BEGIN wire-connection ports -----
-//----- END wire-connection ports -----
-
-
-//----- BEGIN Registered ports -----
-//----- END Registered ports -----
-
-
-wire [0:0] const1_0_const1;
-wire [0:0] sky130_fd_sc_hd__inv_1_0_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_1_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_2_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_3_Y;
-wire [0:0] sky130_fd_sc_hd__mux2_1_0_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_1_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_2_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_3_X;
-
-// ----- BEGIN Local short connections -----
-// ----- END Local short connections -----
-// ----- BEGIN Local output short connections -----
-// ----- END Local output short connections -----
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_0_ (
-		.A(in[0]),
-		.Y(sky130_fd_sc_hd__inv_1_0_Y));
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_1_ (
-		.A(in[1]),
-		.Y(sky130_fd_sc_hd__inv_1_1_Y));
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_2_ (
-		.A(in[2]),
-		.Y(sky130_fd_sc_hd__inv_1_2_Y));
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_3_ (
-		.A(in[3]),
-		.Y(sky130_fd_sc_hd__inv_1_3_Y));
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_4_ (
-		.A(sky130_fd_sc_hd__mux2_1_3_X),
-		.Y(out));
-
-	const1 const1_0_ (
-		.const1(const1_0_const1));
-
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_0_ (
-		.A1(sky130_fd_sc_hd__inv_1_0_Y),
-		.A0(sky130_fd_sc_hd__inv_1_1_Y),
-		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_0_X));
-
-	sky130_fd_sc_hd__mux2_1 mux_l2_in_0_ (
-		.A1(sky130_fd_sc_hd__mux2_1_0_X),
-		.A0(sky130_fd_sc_hd__inv_1_2_Y),
-		.S(sram[1]),
-		.X(sky130_fd_sc_hd__mux2_1_1_X));
-
-	sky130_fd_sc_hd__mux2_1 mux_l2_in_1_ (
-		.A1(sky130_fd_sc_hd__inv_1_3_Y),
-		.A0(const1_0_const1),
-		.S(sram[1]),
-		.X(sky130_fd_sc_hd__mux2_1_2_X));
-
-	sky130_fd_sc_hd__mux2_1 mux_l3_in_0_ (
-		.A1(sky130_fd_sc_hd__mux2_1_1_X),
-		.A0(sky130_fd_sc_hd__mux2_1_2_X),
-		.S(sram[2]),
-		.X(sky130_fd_sc_hd__mux2_1_3_X));
-
-endmodule
-// ----- END Verilog module for mux_tree_tapbuf_size4 -----
 
 //----- Default net type -----
 `default_nettype wire
