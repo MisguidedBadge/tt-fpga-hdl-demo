@@ -20,18 +20,11 @@ wire [0:0] ccff_head;
 wire [0:0] ccff_tail;
 
 assign prog_clk = ui_in[0];
-assign reset = ui_in[2];
-assign reset = rst_n;
 assign ccff_head = ui_in[3];
 
 wire [7:0] fpga_io_in;
 wire [0:0] fpga_io_out;
 
-//assign uo_out [7:1] = 7'b0;
-//assign fpga_io_in = ui_in;
-
-//assign uio_out = 8'b0;
-//assign uio_oe = 0;
 
 fpga_top fpga(.prog_clk(pro_clk), .reset(rst_n),
  .clk(clk), .gfpga_pad_GPIN_PAD(fpga_io_in), 
