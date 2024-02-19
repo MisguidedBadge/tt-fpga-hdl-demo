@@ -3,13 +3,14 @@
 //	Description: Top-level Verilog module for FPGA
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Sun Feb 18 23:40:25 2024
+//	Date: Mon Feb 19 00:44:02 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
 
 // ----- Verilog module for fpga_top -----
 module fpga_top(prog_clk,
+                reset,
                 clk,
                 gfpga_pad_GPIN_PAD,
                 gfpga_pad_GPOUT_PAD,
@@ -17,6 +18,8 @@ module fpga_top(prog_clk,
                 ccff_tail);
 //----- GLOBAL PORTS -----
 input [0:0] prog_clk;
+//----- GLOBAL PORTS -----
+input [0:0] reset;
 //----- GLOBAL PORTS -----
 input [0:0] clk;
 //----- GPIO PORTS -----
@@ -94,6 +97,7 @@ wire [0:2] sb_1__1__0_chany_bottom_out;
 
 	grid_clb grid_clb_1__1_ (
 		.prog_clk(prog_clk),
+		.reset(reset),
 		.clk(clk),
 		.top_width_0_height_0_subtile_0__pin_I_0_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_0_),
 		.top_width_0_height_0_subtile_0__pin_I_1_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_1_),

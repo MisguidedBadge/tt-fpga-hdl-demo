@@ -3,7 +3,7 @@
 //	Description: Verilog modules for physical tile: clb]
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Sun Feb 18 23:40:25 2024
+//	Date: Mon Feb 19 00:44:02 2024
 //-------------------------------------------
 // ----- BEGIN Grid Verilog module: grid_clb -----
 //----- Default net type -----
@@ -11,6 +11,7 @@
 
 // ----- Verilog module for grid_clb -----
 module grid_clb(prog_clk,
+                reset,
                 clk,
                 top_width_0_height_0_subtile_0__pin_I_0_,
                 top_width_0_height_0_subtile_0__pin_I_1_,
@@ -22,6 +23,8 @@ module grid_clb(prog_clk,
                 ccff_tail);
 //----- GLOBAL PORTS -----
 input [0:0] prog_clk;
+//----- GLOBAL PORTS -----
+input [0:0] reset;
 //----- GLOBAL PORTS -----
 input [0:0] clk;
 //----- INPUT PORTS -----
@@ -57,6 +60,7 @@ output [0:0] ccff_tail;
 
 	logical_tile_clb_mode_clb_ logical_tile_clb_mode_clb__0 (
 		.prog_clk(prog_clk),
+		.reset(reset),
 		.clk(clk),
 		.clb_I({top_width_0_height_0_subtile_0__pin_I_0_, top_width_0_height_0_subtile_0__pin_I_1_, top_width_0_height_0_subtile_0__pin_I_2_, top_width_0_height_0_subtile_0__pin_I_3_}),
 		.clb_clk(top_width_0_height_0_subtile_0__pin_clk_0_),

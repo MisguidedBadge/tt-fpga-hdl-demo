@@ -3,7 +3,7 @@
 //	Description: FPGA Verilog full testbench for top-level netlist of design: and2
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Sun Feb 18 23:40:25 2024
+//	Date: Mon Feb 19 00:44:02 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -11,6 +11,7 @@
 module and2_autocheck_top_tb;
 // ----- Local wires for global ports of FPGA fabric -----
 wire [0:0] prog_clk;
+wire [0:0] reset;
 wire [0:0] clk;
 
 // ----- Local wires for I/Os of FPGA fabric -----
@@ -127,10 +128,12 @@ initial
 // ----- Begin connecting global ports of FPGA fabric to stimuli -----
 	assign clk[0] = __op_clock__[0];
 	assign prog_clk[0] = __prog_clock__[0];
+	assign reset[0] = __greset__[0];
 // ----- End connecting global ports of FPGA fabric to stimuli -----
 // ----- FPGA top-level module to be capsulated -----
 	fpga_top FPGA_DUT (
 		.prog_clk(prog_clk[0]),
+		.reset(reset[0]),
 		.clk(clk[0]),
 		.gfpga_pad_GPIN_PAD(gfpga_pad_GPIN_PAD[0:7]),
 		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[0]),

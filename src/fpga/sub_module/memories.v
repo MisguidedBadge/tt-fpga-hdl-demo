@@ -3,7 +3,7 @@
 //	Description: Memories used in FPGA
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Sun Feb 18 23:40:25 2024
+//	Date: Mon Feb 19 00:44:02 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -37,12 +37,12 @@ output [0:1] mem_out;
 	assign ccff_tail[0] = mem_out[1];
 // ----- END Local output short connections -----
 
-	CCFF CCFF_0_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_0_ (
 		.CLK(prog_clk),
 		.D(ccff_head),
 		.Q(mem_out[0]));
 
-	CCFF CCFF_1_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_1_ (
 		.CLK(prog_clk),
 		.D(mem_out[0]),
 		.Q(mem_out[1]));
@@ -88,17 +88,17 @@ output [0:2] mem_out;
 	assign ccff_tail[0] = mem_out[2];
 // ----- END Local output short connections -----
 
-	CCFF CCFF_0_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_0_ (
 		.CLK(prog_clk),
 		.D(ccff_head),
 		.Q(mem_out[0]));
 
-	CCFF CCFF_1_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_1_ (
 		.CLK(prog_clk),
 		.D(mem_out[0]),
 		.Q(mem_out[1]));
 
-	CCFF CCFF_2_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_2_ (
 		.CLK(prog_clk),
 		.D(mem_out[1]),
 		.Q(mem_out[2]));
@@ -144,12 +144,12 @@ output [0:1] mem_out;
 	assign ccff_tail[0] = mem_out[1];
 // ----- END Local output short connections -----
 
-	CCFF CCFF_0_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_0_ (
 		.CLK(prog_clk),
 		.D(ccff_head),
 		.Q(mem_out[0]));
 
-	CCFF CCFF_1_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_1_ (
 		.CLK(prog_clk),
 		.D(mem_out[0]),
 		.Q(mem_out[1]));
@@ -195,17 +195,17 @@ output [0:2] mem_out;
 	assign ccff_tail[0] = mem_out[2];
 // ----- END Local output short connections -----
 
-	CCFF CCFF_0_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_0_ (
 		.CLK(prog_clk),
 		.D(ccff_head),
 		.Q(mem_out[0]));
 
-	CCFF CCFF_1_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_1_ (
 		.CLK(prog_clk),
 		.D(mem_out[0]),
 		.Q(mem_out[1]));
 
-	CCFF CCFF_2_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_2_ (
 		.CLK(prog_clk),
 		.D(mem_out[1]),
 		.Q(mem_out[2]));
@@ -222,11 +222,11 @@ endmodule
 //----- Default net type -----
 `default_nettype none
 
-// ----- Verilog module for lut4_CCFF_mem -----
-module lut4_CCFF_mem(prog_clk,
-                     ccff_head,
-                     ccff_tail,
-                     mem_out);
+// ----- Verilog module for lut4_sky130_fd_sc_hd__dfxtp_1_mem -----
+module lut4_sky130_fd_sc_hd__dfxtp_1_mem(prog_clk,
+                                         ccff_head,
+                                         ccff_tail,
+                                         mem_out);
 //----- GLOBAL PORTS -----
 input [0:0] prog_clk;
 //----- INPUT PORTS -----
@@ -251,88 +251,88 @@ output [0:15] mem_out;
 	assign ccff_tail[0] = mem_out[15];
 // ----- END Local output short connections -----
 
-	CCFF CCFF_0_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_0_ (
 		.CLK(prog_clk),
 		.D(ccff_head),
 		.Q(mem_out[0]));
 
-	CCFF CCFF_1_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_1_ (
 		.CLK(prog_clk),
 		.D(mem_out[0]),
 		.Q(mem_out[1]));
 
-	CCFF CCFF_2_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_2_ (
 		.CLK(prog_clk),
 		.D(mem_out[1]),
 		.Q(mem_out[2]));
 
-	CCFF CCFF_3_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_3_ (
 		.CLK(prog_clk),
 		.D(mem_out[2]),
 		.Q(mem_out[3]));
 
-	CCFF CCFF_4_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_4_ (
 		.CLK(prog_clk),
 		.D(mem_out[3]),
 		.Q(mem_out[4]));
 
-	CCFF CCFF_5_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_5_ (
 		.CLK(prog_clk),
 		.D(mem_out[4]),
 		.Q(mem_out[5]));
 
-	CCFF CCFF_6_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_6_ (
 		.CLK(prog_clk),
 		.D(mem_out[5]),
 		.Q(mem_out[6]));
 
-	CCFF CCFF_7_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_7_ (
 		.CLK(prog_clk),
 		.D(mem_out[6]),
 		.Q(mem_out[7]));
 
-	CCFF CCFF_8_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_8_ (
 		.CLK(prog_clk),
 		.D(mem_out[7]),
 		.Q(mem_out[8]));
 
-	CCFF CCFF_9_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_9_ (
 		.CLK(prog_clk),
 		.D(mem_out[8]),
 		.Q(mem_out[9]));
 
-	CCFF CCFF_10_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_10_ (
 		.CLK(prog_clk),
 		.D(mem_out[9]),
 		.Q(mem_out[10]));
 
-	CCFF CCFF_11_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_11_ (
 		.CLK(prog_clk),
 		.D(mem_out[10]),
 		.Q(mem_out[11]));
 
-	CCFF CCFF_12_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_12_ (
 		.CLK(prog_clk),
 		.D(mem_out[11]),
 		.Q(mem_out[12]));
 
-	CCFF CCFF_13_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_13_ (
 		.CLK(prog_clk),
 		.D(mem_out[12]),
 		.Q(mem_out[13]));
 
-	CCFF CCFF_14_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_14_ (
 		.CLK(prog_clk),
 		.D(mem_out[13]),
 		.Q(mem_out[14]));
 
-	CCFF CCFF_15_ (
+	sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_1_15_ (
 		.CLK(prog_clk),
 		.D(mem_out[14]),
 		.Q(mem_out[15]));
 
 endmodule
-// ----- END Verilog module for lut4_CCFF_mem -----
+// ----- END Verilog module for lut4_sky130_fd_sc_hd__dfxtp_1_mem -----
 
 //----- Default net type -----
 `default_nettype wire

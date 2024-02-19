@@ -3,7 +3,7 @@
 //	Description: Template for user-defined Verilog modules
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Sun Feb 18 23:40:25 2024
+//	Date: Mon Feb 19 00:44:02 2024
 //-------------------------------------------
 // ----- Template Verilog module for sky130_fd_sc_hd__inv_1 -----
 //----- Default net type -----
@@ -134,14 +134,17 @@ endmodule
 `default_nettype wire
 
 
-// ----- Template Verilog module for DFF -----
+// ----- Template Verilog module for sky130_fd_sc_hd__dfrtp_1 -----
 //----- Default net type -----
 `default_nettype none
 
-// ----- Verilog module for DFF -----
-module DFF(CLK,
-           D,
-           Q);
+// ----- Verilog module for sky130_fd_sc_hd__dfrtp_1 -----
+module sky130_fd_sc_hd__dfrtp_1(RESET_B,
+                                CLK,
+                                D,
+                                Q);
+//----- GLOBAL PORTS -----
+input [0:0] RESET_B;
 //----- GLOBAL PORTS -----
 input [0:0] CLK;
 //----- INPUT PORTS -----
@@ -161,20 +164,20 @@ output [0:0] Q;
 
 // ----- Internal logic should end here -----
 endmodule
-// ----- END Verilog module for DFF -----
+// ----- END Verilog module for sky130_fd_sc_hd__dfrtp_1 -----
 
 //----- Default net type -----
 `default_nettype wire
 
 
-// ----- Template Verilog module for CCFF -----
+// ----- Template Verilog module for sky130_fd_sc_hd__dfxtp_1 -----
 //----- Default net type -----
 `default_nettype none
 
-// ----- Verilog module for CCFF -----
-module CCFF(CLK,
-            D,
-            Q);
+// ----- Verilog module for sky130_fd_sc_hd__dfxtp_1 -----
+module sky130_fd_sc_hd__dfxtp_1(CLK,
+                                D,
+                                Q);
 //----- GLOBAL PORTS -----
 input [0:0] CLK;
 //----- INPUT PORTS -----
@@ -194,7 +197,7 @@ output [0:0] Q;
 
 // ----- Internal logic should end here -----
 endmodule
-// ----- END Verilog module for CCFF -----
+// ----- END Verilog module for sky130_fd_sc_hd__dfxtp_1 -----
 
 //----- Default net type -----
 `default_nettype wire

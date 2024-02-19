@@ -3,7 +3,7 @@
 //	Description: Verilog modules for pb_type: ble4
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Sun Feb 18 23:40:25 2024
+//	Date: Mon Feb 19 00:44:02 2024
 //-------------------------------------------
 // ----- BEGIN Physical programmable logic block Verilog module: ble4 -----
 //----- Default net type -----
@@ -11,6 +11,7 @@
 
 // ----- Verilog module for logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4 -----
 module logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4(prog_clk,
+                                                             reset,
                                                              clk,
                                                              ble4_in,
                                                              ble4_clk,
@@ -19,6 +20,8 @@ module logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4(prog_clk,
                                                              ccff_tail);
 //----- GLOBAL PORTS -----
 input [0:0] prog_clk;
+//----- GLOBAL PORTS -----
+input [0:0] reset;
 //----- GLOBAL PORTS -----
 input [0:0] clk;
 //----- INPUT PORTS -----
@@ -68,6 +71,7 @@ wire [0:1] mux_tree_tapbuf_size2_0_sram;
 		.ccff_tail(logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4_0_ccff_tail));
 
 	logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff_0 (
+		.reset(reset),
 		.clk(clk),
 		.ff_D(direct_interc_4_out),
 		.ff_Q(logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff_0_ff_Q),

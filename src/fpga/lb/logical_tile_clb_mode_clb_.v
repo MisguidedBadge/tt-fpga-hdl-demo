@@ -3,7 +3,7 @@
 //	Description: Verilog modules for pb_type: clb
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Sun Feb 18 23:40:25 2024
+//	Date: Mon Feb 19 00:44:02 2024
 //-------------------------------------------
 // ----- BEGIN Physical programmable logic block Verilog module: clb -----
 //----- Default net type -----
@@ -11,6 +11,7 @@
 
 // ----- Verilog module for logical_tile_clb_mode_clb_ -----
 module logical_tile_clb_mode_clb_(prog_clk,
+                                  reset,
                                   clk,
                                   clb_I,
                                   clb_clk,
@@ -19,6 +20,8 @@ module logical_tile_clb_mode_clb_(prog_clk,
                                   ccff_tail);
 //----- GLOBAL PORTS -----
 input [0:0] prog_clk;
+//----- GLOBAL PORTS -----
+input [0:0] reset;
 //----- GLOBAL PORTS -----
 input [0:0] clk;
 //----- INPUT PORTS -----
@@ -69,6 +72,7 @@ wire [0:0] mux_tree_size5_mem_2_ccff_tail;
 
 	logical_tile_clb_mode_default__fle logical_tile_clb_mode_default__fle_0 (
 		.prog_clk(prog_clk),
+		.reset(reset),
 		.clk(clk),
 		.fle_in({mux_tree_size5_0_out, mux_tree_size5_1_out, mux_tree_size5_2_out, mux_tree_size5_3_out}),
 		.fle_clk(direct_interc_1_out),
