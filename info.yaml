@@ -8,6 +8,7 @@ project:
   source_files:
     - fpga/fpga_wrap.v
     - fpga/fpga_top.v
+    - fpga/gpio.v
     - fpga/lb/grid_clb.v
     - fpga/lb/grid_io_hard_bottom.v
     - fpga/lb/logical_tile_clb_mode_clb_.v
