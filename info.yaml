@@ -35,7 +35,6 @@ project:
     - fpga/sub_module/muxes.v
     - fpga/sub_module/mux_primitives.v
     - fpga/sub_module/shift_register_banks.v
-    - fpga/sub_module/user_defined_templates.v
     - fpga/sub_module/wires.v
     
   top_module:  "tt_um_template"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
