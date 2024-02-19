@@ -33,7 +33,7 @@ assign fpga_io_in = ui_in;
 assign uio_out = 8'b0;
 assign uio_oe = 0;
 
-fpga_top fpga(.prog_clk(pro_clk), .set(set), .reset(reset),
+fpga_top fpga(.prog_clk(pro_clk),
  .clk(clk), .gfpga_pad_GPIN_PAD(fpga_io_in), 
  .gfpga_pad_GPOUT_PAD(fpga_io_out), .ccff_head(ccff_head), .ccff_tail(ccff_tail));
 
