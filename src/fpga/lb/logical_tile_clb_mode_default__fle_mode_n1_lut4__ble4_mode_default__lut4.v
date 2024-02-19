@@ -3,7 +3,7 @@
 //	Description: Verilog modules for primitive pb_type: lut4
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Mon Feb 19 00:44:02 2024
+//	Date: Mon Feb 19 00:54:41 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none

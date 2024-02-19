@@ -3,7 +3,7 @@
 //	Description: Multiplexers
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Mon Feb 19 00:44:02 2024
+//	Date: Mon Feb 19 00:54:41 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -49,12 +49,12 @@ wire [0:0] sky130_fd_sc_hd__mux2_1_1_X;
 		.A(in[1]),
 		.Y(sky130_fd_sc_hd__inv_1_1_Y));
 
+	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_2_ (
+		.A(sky130_fd_sc_hd__mux2_1_1_X),
+		.Y(out));
+
 	const1 const1_0_ (
 		.const1(const1_0_const1));
-
-	tap_buf4 tap_buf4_0_ (
-		.in(sky130_fd_sc_hd__mux2_1_1_X),
-		.out(out));
 
 	sky130_fd_sc_hd__mux2_1 mux_l1_in_0_ (
 		.A1(sky130_fd_sc_hd__inv_1_0_Y),
@@ -133,12 +133,12 @@ wire [0:0] sky130_fd_sc_hd__mux2_1_3_X;
 		.A(in[3]),
 		.Y(sky130_fd_sc_hd__inv_1_3_Y));
 
+	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_4_ (
+		.A(sky130_fd_sc_hd__mux2_1_3_X),
+		.Y(out));
+
 	const1 const1_0_ (
 		.const1(const1_0_const1));
-
-	tap_buf4 tap_buf4_0_ (
-		.in(sky130_fd_sc_hd__mux2_1_3_X),
-		.out(out));
 
 	sky130_fd_sc_hd__mux2_1 mux_l1_in_0_ (
 		.A1(sky130_fd_sc_hd__inv_1_0_Y),
@@ -223,12 +223,12 @@ wire [0:0] sky130_fd_sc_hd__mux2_1_2_X;
 		.A(in[2]),
 		.Y(sky130_fd_sc_hd__inv_1_2_Y));
 
+	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_3_ (
+		.A(sky130_fd_sc_hd__mux2_1_2_X),
+		.Y(out));
+
 	const1 const1_0_ (
 		.const1(const1_0_const1));
-
-	tap_buf4 tap_buf4_0_ (
-		.in(sky130_fd_sc_hd__mux2_1_2_X),
-		.out(out));
 
 	sky130_fd_sc_hd__mux2_1 mux_l1_in_0_ (
 		.A1(sky130_fd_sc_hd__inv_1_0_Y),
