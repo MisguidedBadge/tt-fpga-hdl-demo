@@ -22,7 +22,6 @@ project:
     - fpga/routing/cbx_1__0_.v
     - fpga/routing/cbx_1__1_.v
     - fpga/routing/cby_0__1_.v
-    - fpga/routing/cby_1__1_.v
     - fpga/routing/sb_0__0_.v
     - fpga/routing/sb_0__1_.v
     - fpga/routing/sb_1__0_.v
